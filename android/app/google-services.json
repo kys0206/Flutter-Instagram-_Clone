@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "855011364083",
+    "project_id": "withmate-howmany",
+    "storage_bucket": "withmate-howmany.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855011364083:android:d588f1d9077983576d3b86",
+        "android_client_info": {
+          "package_name": "com.youngseok.sample.sample_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855011364083-dfe8tvnfkltd2c6llvo0sjmia87h1lin.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjqh3VT1TuicqgUC0tqXAJYF4x_zyrit8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855011364083-dfe8tvnfkltd2c6llvo0sjmia87h1lin.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "855011364083-5k6nqvl2s97s09813ifs251msbddqb42.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.youngseok.sample.sampleProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

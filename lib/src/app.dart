@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample_project/src/components/image_data.dart';
 import 'package:sample_project/src/controller/bottom_nav_controller.dart';
+import 'package:sample_project/src/pages/active_history.dart';
 import 'package:sample_project/src/pages/home.dart';
+import 'package:sample_project/src/pages/mypage.dart';
 import 'package:sample_project/src/pages/search.dart';
 
 class App extends GetView<BottomNavController> {
@@ -25,15 +27,9 @@ class App extends GetView<BottomNavController> {
                     );
                   },
                 ),
-                Container(
-                  child: Center(child: Text('UPLOAD')),
-                ),
-                Container(
-                  child: Center(child: Text('ACTIVITY')),
-                ),
-                Container(
-                  child: Center(child: Text('MYPAGE')),
-                ),
+                Container(),
+                const ActiveHistory(),
+                const MyPage(),
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(
