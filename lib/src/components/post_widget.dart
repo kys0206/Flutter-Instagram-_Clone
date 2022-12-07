@@ -3,9 +3,12 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_project/src/components/avatar_widget.dart';
 import 'package:sample_project/src/components/image_data.dart';
+import 'package:sample_project/src/models/post.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class PostWidget extends StatelessWidget {
-  const PostWidget({Key? key}) : super(key: key);
+  final Post post;
+  const PostWidget({Key? key, required this.post}) : super(key: key);
 
   Widget _header() {
     return Padding(
@@ -15,10 +18,9 @@ class PostWidget extends StatelessWidget {
         children: [
           AvatarWidget(
               type: AvatarType.TYPE3,
-              nickname: '위드메이트',
+              nickname: post.userInfo!.nickname,
               size: 40,
-              thumbPath:
-                  'https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/2.jpg'),
+              thumbPath: post.userInfo!.thumbnail!),
           GestureDetector(
             onTap: () {},
             child: Padding(
@@ -35,9 +37,7 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget _image() {
-    return CachedNetworkImage(
-        imageUrl:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF4CBeIQVdKND5ABcTVAu7ON0kW6rTp7-9Xg&usqp=CAU');
+    return CachedNetworkImage(imageUrl: post.thumbnail!);
   }
 
   Widget _infoCount() {
@@ -79,17 +79,17 @@ class PostWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
-            '좋아요 150개',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Text(
+            '좋아요 ${post.likeCount ?? 0}개',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           ExpandableText(
-            '콘텐츠1입니다.\n콘텐츠1입니다.\n콘텐츠1입니다.\n콘텐츠1입니다.\n',
-            prefixText: '위드메이트',
+            post.description ?? '',
+            prefixText: post.userInfo!.nickname,
             onPrefixTap: () {
-              print('위드메이트 페이지 이동');
+              print('개발하는남자 페이지 이동');
             },
-            prefixStyle: TextStyle(fontWeight: FontWeight.bold),
+            prefixStyle: const TextStyle(fontWeight: FontWeight.bold),
             expandText: '더보기',
             collapseText: '접기',
             maxLines: 3,
@@ -116,11 +116,11 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget _dateAgo() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Text(
-        '1일전',
-        style: TextStyle(color: Colors.grey, fontSize: 11),
+        timeago.format(post.createdAt!),
+        style: const TextStyle(color: Colors.grey, fontSize: 11),
       ),
     );
   }

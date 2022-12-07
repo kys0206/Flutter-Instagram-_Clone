@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sample_project/src/components/avatar_widget.dart';
 import 'package:sample_project/src/components/image_data.dart';
 import 'package:sample_project/src/components/post_widget.dart';
+import 'package:sample_project/src/controller/home_controller.dart';
+import 'package:get/get.dart';
 
-class Home extends StatelessWidget {
+class Home extends GetView<HomeController> {
   const Home({Key? key}) : super(key: key);
 
   Widget _myStory() {
@@ -55,7 +57,6 @@ class Home extends StatelessWidget {
             type: AvatarType.TYPE1,
             thumbPath:
                 'https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/2.jpg',
-            size: 70,
           ),
         ),
       ]),
@@ -63,9 +64,10 @@ class Home extends StatelessWidget {
   }
 
   Widget _postList() {
-    return Column(
-      children: List.generate(50, (index) => PostWidget()).toList(),
-    );
+    return Obx(() => Column(
+          children: List.generate(controller.postList.length,
+              (index) => PostWidget(post: controller.postList[index])).toList(),
+        ));
   }
 
   @override
